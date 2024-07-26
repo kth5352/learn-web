@@ -11,9 +11,13 @@
         padding: 8px;
         text-align: left;
       }
+      td {
+        vertical-align: middle;
+      }
     </style>
   </head>
   <body>
+    <div>
     <form action="form_ok.php" method="post">
       <label for="uname">이름</label>
       <input type="text" id="uname" name="uname" /><br />
@@ -45,7 +49,9 @@
           font-size: 12pt;
         "
       />
+    </div>
       <hr />
+      <div>
       <input type="submit" value="선택 삭제" />
       <span>| 검색 : </span>
       <select name="dbname" id="dbname">
@@ -81,10 +87,13 @@
         </tr>
         <tr>
           <td colspan="4" rowspan="4">
-            <table>
+            <table style="vertical-align: top;">
+              <td colspan="5" style="border-bottom: 1px solid #acacac;
+              padding: 8px;
+              text-align: left;"></td>
               <tr>
                 <td>번호</td>
-                <td>댓글 내용</td>
+                <td >댓글 내용</td>
                 <td>작성자</td>
                 <td>수정</td>
                 <td>삭제</td>
@@ -123,23 +132,6 @@
           </td>
         </tr>
       </table>
-    </form>
-
-    <br /><br /><br /><br />
-    <form action="form_ok.php" method="post">
-      <label for="uname">이름 : </label><br />
-      <input
-        type="text"
-        id="uname"
-        name="uname"
-        placeholder="이름을 입력"
-      /><br />
-      <br />
-      <label for="email">이메일 : </label><br />
-      <input type="text" id="email" name="email" /><br />
-      <br />
-
-      <input type="submit" value="submit" />
     </form>
   </body>
 </html>
