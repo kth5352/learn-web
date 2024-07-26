@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 100pt;
+      }
+      div[name="n1"] {
+        background-color: rgb(180, 180, 180);
+      }
+      div[name="n3"] {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>0726 수업</h1>
+    <hr />
+    <!--가로선-->
+
+    <!-- table>tr*2>td*4 라고 했을 때의 자동완성 -->
+    <table bgcolor="orange" border="1" width="100%">
+      <tr>
+        <td>a1</td>
+        <td>a2</td>
+        <td>a3</td>
+        <td rowspan="3">a4</td>
+      </tr>
+      <tr>
+        <td>b1</td>
+        <td colspan="2">b2</td>
+      </tr>
+      <tr>
+        <td>c1</td>
+        <td>c2</td>
+        <td>c3</td>
+      </tr>
+    </table>
+    <hr />
+
+    <!--절대경로 하이퍼링크-->
+    <a href="https://namu.wiki/w/HTML">HTML이란?</a><br />
+
+    <!--
+    상대경로 하이퍼링크
+    같은 폴더 내에 있는 html 문서를 가져왔다.
+    -->
+    <a href="01. h and p.html">h and p</a>
+    <hr />
+
+    <!--페이지 내의 id를 기준으로 이동하는 하이퍼링크-->
+    <a href="#n1">N1</a>
+    <a href="#n2">N2</a>
+    <a href="#n3">N3</a>
+    <a href="#n4">N4</a>
+
+    <div name="n1" id="n1">N1</div>
+    <div name="n2" id="n1">N2</div>
+    <div name="n3" id="n3">N3</div>
+    <div name="n4" id="n4">N4</div>
+    <hr />
+  </body>
+</html>
