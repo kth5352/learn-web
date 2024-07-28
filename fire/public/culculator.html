@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기</title>
+    <style>
+      td {
+        padding: 20pt;
+        text-align: center;
+        font-size: 16pt;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>계산기</h1>
+
+    <div>
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <td colspan="4">
+            <input
+              type="text"
+              id="display"
+              style="text-align: right; border: none; font-size: 15pt"
+            />
+          </td>
+          <!--계산식-->
+        </tr>
+        <tr>
+          <td colspan="4">
+            <input
+              type="text"
+              id="result"
+              style="text-align: right; border: none; font-size: 15pt"
+            />
+          </td>
+          <!--해답-->
+        </tr>
+        <tr>
+          <td colspan="3" onclick="remove()">AC</td>
+          <td onclick="add('/')">/</td>
+        </tr>
+        <tr>
+          <td onclick="add('7')">7</td>
+          <td onclick="add('8')">8</td>
+          <td onclick="add('9')">9</td>
+          <td onclick="add('*')">*</td>
+        </tr>
+        <tr>
+          <td onclick="add('4')">4</td>
+          <td onclick="add('5')">5</td>
+          <td onclick="add('6')">6</td>
+          <td onclick="add('-')">-</td>
+        </tr>
+        <tr>
+          <td onclick="add('1')">1</td>
+          <td onclick="add('2')">2</td>
+          <td onclick="add('3')">3</td>
+          <td onclick="add('+')">+</td>
+        </tr>
+        <tr>
+          <td colspan="2" onclick="add('0')">0</td>
+          <td onclick="add('.')">.</td>
+          <td onclick="calculation()">=</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      function add(char) {
+        if (document.getElementById("result").value !== "") {
+          document.getElementById("display").value = "";
+          document.getElementById("result").value = "";
+        }
+        let display = document.getElementById("display");
+        if (display.value === "" && char === ".") {
+          display.value += "0";
+        }
+        display.value += char;
+      }
+
+      function calculation() {
+        let formula = document.getElementById("display");
+        let result = eval(formula.value);
+        document.getElementById("result").value = result;
+      }
+
+      function remove() {
+        let display = document.getElementById("display");
+        display.value = "";
+        document.getElementById("result").value = "";
+      }
+    </script>
+  </body>
+</html>
