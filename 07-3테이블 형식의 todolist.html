@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table</title>
+    <style>
+      tr,
+      td {
+        text-align: center;
+      }
+      button {
+        border: none;
+        background-color: dodgerblue;
+        color: white;
+        font-family: 돋움;
+      }
+      button:hover {
+        background-color: rgb(50, 111, 172);
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+    <script>
+      let todoList = [
+        { id: 101, title: "간지나게 숨쉬기", done: true },
+        { id: 102, title: "기깔나게 잠자기", done: false },
+        { id: 103, title: "복스럽게 먹기", done: false },
+        { id: 104, title: "전력으로 게임하기", done: false },
+      ];
+      let seqCnt = 105;
+
+      window.onload = () => {
+        let demo = document
+          .getElementById("demo")
+          .getElementsByTagName("tbody")[0];
+        let newtext = document.getElementById("newtext");
+        let msg = document.getElementById("msg");
+
+        function drawList() {
+          demo.innerHTML = ""; // 기존 내용을 지우기
+
+          todoList.forEach(function (todoObj) {
+            let isCheck = todoObj.done ? "checked" : "";
+            demo.innerHTML += `<tr>
+                        <td>${todoObj.id}</td>
+                        <td><input type="checkbox" ${isCheck} /></td>
+                        <td>${todoObj.title}</td>
+                        <td><button>✏️</button></td>
+                        <td><button>🗑️</button></td>
+                    </tr>`;
+          });
+        }
+
+        function addMsg() {
+          todoList.push({ id: seqCnt, title: msg.value, done: false });
+          seqCnt++;
+          drawList();
+          msg.value = "";
+          msg.focus();
+        }
+
+        newtext.addEventListener("click", () => {
+          if (msg.value.trim() !== "") {
+            addMsg();
+          }
+        });
+
+        msg.addEventListener("keyup", (e) => {
+          if (e.key === "Enter") {
+            if (msg.value.trim() !== "") {
+              addMsg();
+            }
+          }
+        });
+
+        drawList(); // 초기 목록을 그리기
+      };
+    </script>
+  </head>
+  <body>
+    <br />
+    <input type="text" id="msg" />
+    <button type="button" id="newtext">new</button><br /><br />
+
+    <table id="demo" width="550" border="1">
+      <thead>
+        <tr>
+          <td>번호</td>
+          <td>확인</td>
+          <td>할일</td>
+          <td>수정</td>
+          <td>삭제</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+</html>

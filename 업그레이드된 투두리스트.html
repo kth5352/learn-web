@@ -9,7 +9,6 @@
       href="https://fonts.googleapis.com/css2?family=Dongle&family=Single+Day&display=swap"
       rel="stylesheet"
     />
-
     <title>table</title>
     <style>
       .single-day-regular,
@@ -77,6 +76,7 @@
         };
 
         window.deleteItem = function (index) {
+          console.dir(index);
           todoList.splice(index, 1);
           drawList();
         };

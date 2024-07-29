@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = () => {
+        console.dir(window.document.body);
+        //id 값으로 태그 엘리먼드를 참조
+        let demo = document.getElementById("demo");
+        let changeBtn = document.getElementById("changeBtn");
+        let resetBtn = document.getElementById("resetBtn");
+
+        //버튼에 클릭 이벤트 핸들러를 추가하여 내용이 변경되도록 하기
+        changeBtn.addEventListener("click", () => {
+          demo.innerHTML = "<h4>Changed</h4>";
+          document.body.style.backgroundColor = "#FFB7C5";
+        });
+
+        resetBtn.addEventListener("click", () => {
+          demo.innerHTML = "JavaScript can change HTML content.";
+          document.body.style.backgroundColor = "";
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="demo">JavaScript can change HTML content.</h1>
+
+    <!-- 인라인 적용 방식 -->
+    <button type="button" id="changeBtn">Change</button>
+    <button type="button" id="resetBtn">Reset</button>
+  </body>
+</html>

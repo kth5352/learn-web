@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        transition: background-color 0.5s ease;
+      }
+    </style>
+    <script>
+      window.onload = () => {
+        // 랜덤 색상을 생성하는 함수
+        const getRandomColor = () => {
+          const letters = "0123456789ABCDEF";
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        };
+
+        let demo = document.querySelector("#demo");
+        let changeBtn = document.getElementById("changeBtn");
+        let resetBtn = document.getElementById("resetBtn");
+        let msg = document.getElementById("message");
+        let test = document.getElementById("test");
+
+        // 버튼에 클릭 이벤트 핸들러를 추가하여 내용이 변경되도록 하기
+        changeBtn.addEventListener("click", () => {
+          demo.innerHTML = "누름";
+          document.body.style.backgroundColor = getRandomColor();
+        });
+
+        resetBtn.addEventListener("click", () => {
+          demo.innerHTML = "JavaScript can change HTML content.";
+          document.body.style.backgroundColor = "";
+        });
+
+        msg.addEventListener("keyup", (event) => {
+          if (event.key === "Enter") {
+            demo.innerText = msg.value;
+            document.body.style.backgroundColor = getRandomColor();
+          }
+        });
+
+        test.addEventListener("click", (e) => {
+          console.dir(e);
+        });
+
+        test.addEventListener("keydown", (e) => {
+          console.dir(e);
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="text" id="message" />
+
+    <!-- 인라인 적용 방식 -->
+    <button type="button" id="changeBtn">Change</button>
+    <button type="button" id="resetBtn">Reset</button>
+    <input type="text" id="test" style="width: 20pt" />
+
+    <h1 id="demo">JavaScript can change HTML content.</h1>
+  </body>
+</html>

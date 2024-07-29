@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤 배경색 변경기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Single+Day&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Single Day", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>랜덤 배경색 변경기</h1>
+    <a href="index.html">main</a><br />
+    <button id="startBtn">배경색 변경 시작</button>
+    <button id="stopBtn">배경색 변경 멈추기</button>
+
+    <script>
+      let intervalId;
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      document.getElementById("startBtn").addEventListener("click", () => {
+        if (intervalId) return; // 이미 실행 중이면 중복 실행 방지
+        intervalId = setInterval(() => {
+          document.body.style.backgroundColor = getRandomColor();
+        }, 500);
+      });
+
+      document.getElementById("stopBtn").addEventListener("click", () => {
+        clearInterval(intervalId);
+        intervalId = null; // intervalId 초기화
+        document.body.style.backgroundColor = "#FFFFFF"; // 배경을 흰색으로 변경
+      });
+    </script>
+  </body>
+</html>
