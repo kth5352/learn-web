@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Single+Day&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Single Day", cursive;
+        font-weight: 400;
+        font-size: 20px;
+        font-style: normal;
+      }
+      div {
+        border: 1px solid navy;
+        padding: 5px;
+        border-radius: 8px;
+      }
+      div.header {
+        overflow: hidden;
+      }
+      div.middle {
+        overflow: hidden;
+      }
+      div.footer {
+        height: 100px;
+      }
+      div.container {
+        width: 1000px;
+        margin: auto;
+      }
+      div header h1 {
+        text-align: center;
+      }
+      div.header div {
+        height: 50px;
+      }
+
+      div.middle > div:nth-child(1) {
+        width: 180px;
+      }
+      div.middle > div:nth-child(2) {
+        width: 590px;
+      }
+      div.middle > div:nth-child(3) {
+        width: 180px;
+      }
+      div.middle > div {
+        float: left;
+        height: 300px;
+        width: 120px;
+        height: 50px;
+        text-align: center;
+      }
+      header ul {
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: space-around;
+      }
+      header ul li {
+        padding: 10px 20px;
+        border-bottom: 2px solid black;
+      }
+      nav {
+        border-bottom: 1px solid gray;
+      }
+      header ul li:hover {
+        border-bottom: 2px solid orange;
+        font-weight: bold;
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>레이아웃 실습</h1>
+        <nav>
+          <ul>
+            <li>Home</li>
+            <li>Profile</li>
+            <li>Gallery</li>
+            <li>Lecture</li>
+            <li>Shop</li>
+          </ul>
+        </nav>
+      </header>
+      <div class="middle">
+        <div>left</div>
+        <div>center</div>
+        <div>right</div>
+      </div>
+      <div class="footer"></div>
+    </div>
+    <script>
+      let intervalId;
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      document.querySelectorAll("header ul li").forEach((li) => {
+        li.addEventListener("mouseenter", () => {
+          const randomColor = getRandomColor();
+          li.style.color = randomColor;
+          li.style.borderBottomColor = randomColor;
+        });
+        li.addEventListener("mouseleave", () => {
+          li.style.color = "";
+          li.style.borderBottomColor = "";
+        });
+      });
+    </script>
+  </body>
+</html>

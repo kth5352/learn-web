@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원관리</title>
+    <style>
+      .underline td,
+      .nuderline th {
+        border-bottom: 1px solid #acacac;
+        padding: 8px;
+        text-align: left;
+      }
+      td {
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <form action="form_ok.php" method="post">
+      <label for="uname">이름</label>
+      <input type="text" id="uname" name="uname" /><br />
+      <label for="department">부서</label>
+      <input type="text" id="department" name="department" /><br />
+      <label for="position">직책</label>
+      <input type="text" id="position" name="position" /><br />
+      <label for="uimage">사진</label>
+      <input type="file" id="uimage" name="uimage" /><br />
+      <br />
+
+      <input
+        type="submit"
+        value="새 사원 추가"
+        style="
+          border-radius: 5px;
+          background-color: lightsalmon;
+          border: none;
+          color: white;
+          width: 100pt;
+          height: 30pt;
+          font-size: 12pt;
+        "
+      />
+    </div>
+      <hr />
+      <div>
+      <input type="submit" value="선택 삭제" />
+      <span>| 검색 : </span>
+      <select name="dbname" id="dbname">
+        <option value="1">이름</option>
+      </select>
+      <input type="text" id="dbname" name="dbname" />
+      <table border="1" style="border-collapse: collapse">
+        <tr style="background-color: orange">
+          <th><input type="checkbox" /></th>
+          <th>번호</th>
+          <th>사진</th>
+          <th>사원명</th>
+          <th>부서</th>
+          <th>직급</th>
+          <th>수정</th>
+          <th>삭제</th>
+        </tr>
+        <tr>
+          <td rowspan="3" style="vertical-align: top">
+            <input type="checkbox" />
+          </td>
+          <td rowspan="3" style="vertical-align: top">1043</td>
+          <td><img src="../img/stella.png" alt="stella" style="width: 200px" /></td>
+          <td>홍길동</td>
+          <td>개발</td>
+          <td>대리</td>
+          <td rowspan="3" style="vertical-align: top">
+            <input type="submit" value="edit" />
+          </td>
+          <td rowspan="3" style="vertical-align: top">
+            <input type="submit" value="delete" />
+          </td>
+        </tr>
+        <!-- <tr>
+          <td colspan="4" rowspan="4">
+            <table style="vertical-align: top;">
+              <td colspan="5" style="border-bottom: 1px solid #acacac;
+              padding: 8px;
+              text-align: left;"></td>
+              <tr>
+                <td>번호</td>
+                <td >댓글 내용</td>
+                <td>작성자</td>
+                <td>수정</td>
+                <td>삭제</td>
+              </tr>
+              <tr class="underline">
+                <td colspan="5"></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>멋진 사진입니다</td>
+                <td>박문수</td>
+                <td>수정</td>
+                <td>삭제</td>
+              </tr>
+              <tr class="underline">
+                <td colspan="5"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>좋아요^^ 퍼가요~</td>
+                <td>일지매</td>
+                <td>수정</td>
+                <td>삭제</td>
+              </tr>
+              <tr class="underline">
+                <td colspan="5"></td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  댓글 <input type="text" style="width: 50%" /> 작성자
+                  <input type="text" style="width: 10%" />
+                  <input type="submit" value="댓글입력" />
+                </td>
+              </tr>
+            </table>
+          </td> -->
+        </tr>
+      </table>
+    </form>
+
+    <script></script>
+  </body>
+</html>

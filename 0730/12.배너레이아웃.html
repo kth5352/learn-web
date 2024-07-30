@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>레이아웃 실습</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Single+Day&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Single Day", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+      header {
+        border: 0px solid gray;
+        width: 1000px;
+        margin: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      ul {
+        margin: auto;
+        border: 0px solid red;
+        padding: 0;
+        /* height 속성을 주지 않고 overflow 설정 */
+        /* height: 40px; */
+        overflow: hidden;
+        width: 600px;
+      }
+      header ul li {
+        width: 120px;
+        height: 50px;
+        border: 0px solid black;
+        text-align: center;
+        list-style: none;
+        float: left;
+        box-sizing: border-box;
+        line-height: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      nav {
+        border-bottom: 1px solid gray;
+      }
+      header ul li:hover {
+        border-bottom: 2px solid orange;
+        font-weight: bold;
+        color: orange;
+      }
+      img {
+        width: 100%;
+      }
+      #d1 {
+        background-color: rgb(206, 206, 206);
+        width: 1000px;
+        height: 100px;
+        line-height: 100px;
+        border: 1px solid black;
+        text-align: center;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>레이아웃 실습 김태현</h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>Profile</li>
+          <li>Gallery</li>
+          <li>Lecture</li>
+          <li>Shop</li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="d1">
+      <ui>
+        <li>내용물</li>
+      </ui>
+    </div>
+
+    <div>
+      <div id="d2"></div>
+      <div>
+        <div id="m1"></div>
+        <div id="m2"></div>
+        <div id="m3"></div>
+      </div>
+      <div id="d3"></div>
+    </div>
+    <div id=""></div>
+
+    <script>
+      let intervalId;
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      document.querySelectorAll("header ul li").forEach((li) => {
+        li.addEventListener("mouseenter", () => {
+          const randomColor = getRandomColor();
+          li.style.color = randomColor;
+          li.style.borderBottomColor = randomColor;
+        });
+        li.addEventListener("mouseleave", () => {
+          li.style.color = "";
+          li.style.borderBottomColor = "";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -17,7 +17,9 @@
         font-weight: 400;
         font-style: normal;
       }
-
+      h1 {
+        text-align: center;
+      }
       tr,
       td {
         text-align: center;
@@ -36,6 +38,18 @@
       input[type="text"] {
         width: 100%;
         box-sizing: border-box;
+      }
+      #newtext {
+        width: 50px;
+        height: 30px;
+        font-size: 20px;
+        color: black;
+        background-color: pink;
+        text-shadow: -1px 0px white, 0px 1px white, 1px 0px white,
+          0px -1px white;
+      }
+      #newtext:hover {
+        background-color: plum;
       }
     </style>
     <script>
@@ -57,7 +71,7 @@
 
         function drawList(list = todoList) {
           demo.innerHTML = ""; // 기존 내용을 지우기
-
+          var loadTodoList = JSON.parse(localStorage.getItem("todoList")); //로컬스토리지
           list.forEach(function (todoObj, index) {
             let isCheck = todoObj.done ? "checked" : "";
             let isCheckTxt = todoObj.done
