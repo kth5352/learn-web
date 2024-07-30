@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calaulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Single+Day&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Single Day", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18pt;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <fieldset>
+        <legend>완전 쉬워요 간단 계산기</legend>
+        <input type="text" style="width: 40px" class="x1" />
+        <select name="oper" id="oper">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <input type="text" style="width: 40px" class="x2" />
+        <button type="button" class="resultBtn">=</button>
+        <span class="resultArea">?</span>
+      </fieldset>
+    </form>
+
+    <script>
+      //getElementsByClassName()은 리턴형이 리스트(HtmlCllection) 형태이다.
+
+      function calaulator(a, b, o) {
+        switch (o) {
+          case "+":
+            return a + b;
+          case "-":
+            return a - b;
+          case "*":
+            return a * b;
+          case "/":
+            return a / b;
+          default:
+            return null;
+        }
+      }
+      function calculation() {
+        let x1 = parseFloat(document.getElementsByClassName("x1")[0].value);
+        let x2 = parseFloat(document.getElementsByClassName("x2")[0].value);
+        let oper = document.getElementById("oper").value;
+        let result = calaulator(x1, x2, oper);
+        document.querySelector(".resultArea").textContent = result;
+      }
+
+      document
+        .querySelector(".resultBtn")
+        .addEventListener("click", calculation);
+
+      //아래의 방법도 가능하다.
+      // let resultBtn = document.getElementsByClassName("resultBtn")[0];
+      // resultBtn.addEventListener("click", (e) => {
+      //   event.preventDefault();
+      //   let x1 = parseFloat(document.getElementsByClassName("x1")[0].value);
+      //   let x2 = parseFloat(document.getElementsByClassName("x2")[0].value);
+      //   let oper = document.getElementById("oper").value;
+      //   let resultArea = document.getElementsByClassName("resultArea")[0];
+      //   let result = calaulator(x1, x2, oper);
+      //   resultArea.innerHTML = result;
+      // });
+    </script>
+  </body>
+</html>

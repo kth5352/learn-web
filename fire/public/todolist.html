@@ -9,7 +9,6 @@
       href="https://fonts.googleapis.com/css2?family=Dongle&family=Single+Day&display=swap"
       rel="stylesheet"
     />
-
     <title>table</title>
     <style>
       .single-day-regular,
@@ -61,10 +60,13 @@
 
           list.forEach(function (todoObj, index) {
             let isCheck = todoObj.done ? "checked" : "";
+            let isCheckTxt = todoObj.done
+              ? `<del>${todoObj.title}</del>`
+              : todoObj.title;
             demo.innerHTML += `<tr>
                         <td>${todoObj.id}</td>
                         <td><input type="checkbox" ${isCheck} onchange="toggleDone(${index})" /></td>
-                        <td id="title-${index}">${todoObj.title}</td>
+                        <td id="title-${index}">${isCheckTxt}</td>
                         <td><button onclick="editItem(${index})">✏️</button></td>
                         <td><button onclick="deleteItem(${index})">🗑️</button></td>
                     </tr>`;
@@ -77,6 +79,7 @@
         };
 
         window.deleteItem = function (index) {
+          console.dir(index);
           todoList.splice(index, 1);
           drawList();
         };
