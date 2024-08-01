@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>수정하기</h1>
+
+    <form action="/saram/update" method="get">
+      <table style="text-align: center; width: 80%;">
+        <tr>
+          <tr>id : <input type="text" name="id" value="<%= saram.id %>"/></tr><br>
+          <tr>이름 : <input type="text" name="name" value="<%= saram.name %>"/></tr><br>
+          <tr>번호 : <input type="text" name="phone" value="<%= saram.phone %>"/></tr><br>
+          <tr>메일 : <input type="text" name="email" value="<%= saram.email %>"/></tr><br>
+        </tr>
+      </table>
+      <input type="submit" value="저장" />
+    </form>
+    </script>
+  </body>
+</html>
