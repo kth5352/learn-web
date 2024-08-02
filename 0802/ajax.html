@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+  </head>
+  <body>
+    <p id="demo">버튼을 누르면 바뀝니다.</p>
+    <button onclick="startAjax()">AJAX 가동</button>
+
+    <script>
+      function startAjax() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          let todoListTxt = xhr.responseText();
+          console.log(todoListTxt);
+        };
+        xhttp.open("GET", "todoList.txt", true);
+        xhttp.send();
+      }
+    </script>
+  </body>
+</html>
