@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>피보나치 수열</title>
+  </head>
+  <body>
+    <h1>피보나치 수열</h1>
+    <p id="result"></p>
+
+    <script>
+      function fibonacci(n) {
+        if (n <= 1) return n;
+        let fib = [0, 1];
+        for (let i = 2; i <= n; i++) {
+          fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        return fib[n];
+      }
+
+      function displayFibonacciSequence(n) {
+        let resultElement = document.getElementById("result");
+        let sequence = [];
+        for (let i = 0; i <= n; i++) {
+          sequence.push(fibonacci(i));
+        }
+        resultElement.innerHTML = sequence.join(", ");
+      }
+
+      displayFibonacciSequence(256);
+    </script>
+  </body>
+</html>

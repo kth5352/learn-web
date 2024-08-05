@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Up-Down Game</title>
+  </head>
+  <body>
+    <p>다음 중 예상되는 버튼을 눌러주세요</p>
+    <div id="btn"></div>
+
+    <script>
+      const btn = document.getElementById("btn");
+      let answer = 0;
+      let start = 1,
+        end = 100;
+
+      function createBtn(start, end) {
+        btn.innerHTML = "";
+        for (let i = start; i <= end; i++) {
+          const button = document.createElement("button");
+          button.innerText = i;
+          button.value = i;
+          button.onclick = function () {
+            const value = parseInt(this.value);
+            if (answer > value) {
+              start = value + 1;
+              createBtn(start, end);
+            } else if (answer < value) {
+              end = value - 1;
+              createBtn(start, end);
+            } else {
+              btn.innerHTML = "<h1>축하합니다</h1>";
+            }
+          };
+          btn.appendChild(button);
+        }
+      }
+
+      function startGame() {
+        answer = Math.floor(Math.random() * 101);
+        console.log(answer);
+        start = 1;
+        end = 100;
+        createBtn(start, end);
+      }
+
+      startGame();
+    </script>
+  </body>
+</html>

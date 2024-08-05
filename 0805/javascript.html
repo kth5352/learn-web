@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 실습</title>
+  </head>
+  <body>
+    <script>
+      let user = "user1";
+      let name = "김태현";
+
+      console.dir(user);
+      console.dir(name);
+
+      //window는 최상위 객체이다.
+      console.dir(window);
+      //아무 지정없는 상태의 this는 window이다.
+      console.log("this === window는 ", this === window);
+
+      //var로 선언된 변수를 열거하기
+      var admin01 = "스폰지밥";
+      var admin02 = "뚱이";
+      var admin03 = "징징이";
+      var admin04 = "다람이";
+
+      //위는 배열이 아니지만, 연관배열의 형태로 사용이 가능하다.
+      //admin01 === this.admin01 === this["admin01"]
+      console.log(this["admin01"]);
+      console.log(this["admin0" + 1]);
+
+      for (let i = 1; i <= 4; i++) {
+        //console.log(this["admin0" + i]);
+        console.log(this[`admin0${i}`]);
+      }
+      //var로 선언된 변수는 window의 멤버이다.
+
+      var aaa = "aaa";
+      var aaa = "var로 중복 선언이 가능하다!";
+
+      function aMyfn() {
+        //함수 내부에서 동일한 이름으로 var로 선언하면
+        //외부에서 선언한 변수는 접근할 수 없다.
+        //var나 function은 함수단위 scope이다.
+        //자바스크립트는 인터프리터 언어이기 때문에 "위치가 중요"하다.
+        var aaa = "bbb";
+        console.log(aaa);
+        console.log("myFunction 실행");
+      }
+
+      class MyCls {
+        fn01() {
+          this.aClsName = "마이 클래스";
+          console.log("MyCls의 fn01() 함수", this);
+          console.log(window);
+          document.write(window);
+        }
+      }
+      let myClsRef = new MyCls();
+      //이러면 객체가 window가 아니라 객체 자신이 된다!
+      myClsRef.fn01();
+
+      var ccc1 = null;
+      var ccc2;
+
+      //결과 : null, undefined
+      console.log("ccc1 = ", ccc1);
+      console.log("ccc2 = ", ccc2);
+    </script>
+  </body>
+</html>
