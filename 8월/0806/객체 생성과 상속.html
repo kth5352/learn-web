@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Animal(name, sound) {
+        this.name = name;
+        this.sound = sound;
+      }
+      Animal.prototype.mkSound = function () {
+        console.log(`${this.name}이(가) ${this.sound} 소리를 내며 운다.`);
+      };
+      function Cat(name, sound) {
+        Animal.call(this, name, sound);
+      }
+      Cat.prototype = Object.create(Animal.prototype);
+      Cat.prototype.constructor = Cat;
+
+      function Dog(name, sound) {
+        Animal.call(this, name, sound);
+      }
+      Dog.prototype = Object.create(Animal.prototype);
+      Dog.prototype.constructor = Dog;
+
+      let cat = new Cat("고양이", "야옹");
+      let dog = new Dog("강아지", "멍멍");
+      cat.mkSound();
+      dog.mkSound();
+
+      const animals = [
+        new Dog("브래들리", "으르렁", 10),
+        new Dog("그루저", "월월", 10),
+        new Cat("필리아", "야오옹", 9),
+        new Cat("아트리", "미야옹", 9),
+      ];
+
+      animals.forEach(function (ani) {
+        ani.mkSound();
+      });
+    </script>
+  </body>
+</html>
