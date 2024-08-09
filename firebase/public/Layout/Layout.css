@@ -1,0 +1,48 @@
+body {
+  font-family: "Single Day", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+section {
+  width: 90%;
+  margin: 0 auto;
+}
+section > div {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.main {
+  flex: 2;
+}
+.sub {
+  flex: 4;
+}
+
+.main img {
+  width: 100%;
+}
+.sub img {
+  width: 25%;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sub-up,
+.sub-down {
+  display: flex;
+  justify-content: center;
+}
