@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Input from "./components/Input";
+import Output from "./components/Output";
+import TableEx from "./TableEx"; // TableEx 컴포넌트 추가
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className="jumbotron">
+        <h1>Todo List</h1>
+        <p>오늘 할 일을 입력 하세요</p>
       </header>
+      {/* 입력 기능 */}
+      <Input />
+      {/* 목록 출력 기능 */}
+      <Output />
+      {/* TableEx 컴포넌트 추가 */}
+      <TableEx />
     </div>
   );
-}
+};
 
 export default App;
