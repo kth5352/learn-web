@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React를 해보자</title>
+    <!-- React CDN 사용 -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>React start!</h1>
+    <div id="root"></div>
+
+    <!-- javascript가 아닌 babel로 type 지정 -->
+    <script type="text/babel">
+      function Hello() {
+        return (
+          <>
+            <h2>Todo List</h2>
+            <p>
+              <input type="text" />
+              {
+                // 여기는 또 자바스크립트 문법을 사용가능
+                console.log("자바스크립트 쓰는 공간!!")
+              }{" "}
+              <button>저장</button>
+            </p>
+          </>
+        );
+      }
+
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(Hello());
+    </script>
+  </body>
+</html>
