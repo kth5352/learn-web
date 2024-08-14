@@ -7,23 +7,21 @@ const App = () => {
     {
       no: 1,
       img: "img/img1.png",
-      title: "5 Terre",
+      title: "환경친화적 전기차",
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "전기차는 화석연료를 이용하는 것이 아니기 때문에 기존의 차량보다 조금 더 친환경적이다.",
     },
     {
       no: 2,
       img: "img/img2.jpg",
-      title: "Monterosso",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      title: "넓은 바다, 내리쬐는 여름의 태양볕",
+      content: "여름 바다의 햇빛은 매우 강하다. 선크림 필수",
     },
     {
       no: 3,
       img: "img/img3.jpg",
-      title: "Vernazza",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      title: "카후란 무엇인가?",
+      content: "부자가 되고 싶어요.",
     },
   ]);
 
@@ -32,7 +30,7 @@ const App = () => {
       {photoArr.map(function (item) {
         return <Photo key={item.no} item={item} />;
       })}
-      <PhotoList photoArr={photoArr} />
+      {/* <PhotoList photoArr={photoArr} /> */}
     </div>
   );
 };
