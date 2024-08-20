@@ -1,6 +1,8 @@
 import "./App.css";
 import { useState } from "react";
 import ItemRow from "./ItemRow";
+import Input from "./Input";
+import Output from "./Output";
 
 const App = () => {
   // 전역변수를 state로 만들어 주어야 re rendering 된다.
@@ -50,13 +52,12 @@ const App = () => {
   const onEdit = ({ no, title, done }) => {
     const newTodoList = [...todoList];
     todoList.forEach((item, idx) => {
-      if (item.no == no) {
+      if (item.no === no) {
         newTodoList[idx].done = done;
         newTodoList[idx].title = title;
       }
     });
     setTodoLilst(newTodoList);
-    console.log(newTodoList);
   };
 
   // 취소선 스타일 설정
@@ -67,33 +68,12 @@ const App = () => {
       <div className="App-header">
         <h1>{name} App</h1>
       </div>
-      <div className="input-title">
-        <div className="container" style={{ padding: "10px" }}>
-          <div className="input-group mb-3">
-            <input
-              value={inputTitle}
-              onChange={onChangeTitle}
-              type="text"
-              className="form-control"
-            />
-            <div className="input-group-append">
-              <button className="btn btn-success" onClick={onClickEvent}>
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* todo 타이틀 입력 콤포넌트 위치 */}
+      <Input />
+
       <div className="list-body">
         <div className="container">
           <table className="table table-hover">
-            <thead>
-              <tr style={{ textAlign: "center" }}>
-                <th>Done</th>
-                <th>Title</th>
-                <th>Buttons</th>
-              </tr>
-            </thead>
             <tbody>
               {todoList.map((item) => {
                 return (
@@ -111,7 +91,6 @@ const App = () => {
               })}
             </tbody>
           </table>
-          <ul></ul>
         </div>
       </div>
     </div>
