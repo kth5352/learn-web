@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const expressSession = require("express-session");
 
 app.set("port", 3000);
 app.set("views", "views");
@@ -14,6 +15,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // 쿠키 사용 미들웨어 설정
 app.use(cookieParser());
+// 세션 미들웨어 등록
+app.use(
+  expressSession({
+    secret: "my key",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 const memberList = [
   {
@@ -61,12 +70,25 @@ router.route("/profile").get((req, res) => {
   });
 });
 router.route("/member").get((req, res) => {
-  req.app.render("member/Member", {}, (err, html) => {
-    res.end(html);
-  });
+  // 로그인이 되어 있다면 member 페이지를 보여준다.
+  // 쿠키는 사용자쪽에 전달(res), 세션은 요청 들어올때 생성(req)
+  if (req.session.user !== undefined) {
+    const user = req.session.user;
+    req.app.render("member/Member", { user }, (err, html) => {
+      res.end(html);
+    });
+  } else {
+    res.redirect("/login");
+  }
 });
 router.route("/login").get((req, res) => {
   req.app.render("member/Login", {}, (err, html) => {
+    // 사용자(접속자)의 로컬에 쿠키가 저장 된다.
+    res.cookie("user", {
+      id: "TestUser",
+      name: "테스트 유저",
+      authorized: true,
+    });
     res.end(html);
   });
 });
@@ -77,12 +99,37 @@ router.route("/login").post((req, res) => {
     if (memberList[idx].password === req.body.password) {
       console.log("로그인 성공!");
       // 세션에 로그인 정보를 등록 후 멤버 페이지 이동
+      req.session.user = {
+        id: req.body.id,
+        name: memberList[idx].name,
+        email: memberList[idx].email,
+        no: memberList[idx].no,
+      };
+      res.redirect("/member");
     } else {
-      console.log("로그인 실패!");
-      // 다시 로그인 페이지로 이동
+      console.log("로그인 실패! 패스워드가 맞지 않습니다.");
+      // 다시 로그인 페이지로 다시 이동
+      res.redirect("/login");
     }
+  } else {
+    console.log("존재하지 않는 계정입니다.");
+    res.redirect("/login");
   }
-  res.redirect("/member");
+});
+router.route("/logout").get((req, res) => {
+  console.log("GET - /logout 호출 ...");
+  // 로그인 된 상태라면 로그아웃
+  if (!req.session.user) {
+    console.log("아직 로그인 전 상태입니다.");
+    res.redirect("/login");
+    return;
+  }
+  // 세션의 user 정보를 제거 해서 logout처리
+  req.session.destroy((err) => {
+    if (err) throw err;
+    console.log("로그아웃 성공!");
+    res.redirect("/login");
+  });
 });
 router.route("/joinus").get((req, res) => {
   // 회원 가입 ejs 페이지 forward
@@ -99,8 +146,34 @@ router.route("/gallery").get((req, res) => {
     res.end(html);
   });
 });
+// ---- 쇼핑몰 기능
 router.route("/shop").get((req, res) => {
   req.app.render("shop/Shop", {}, (err, html) => {
+    res.end(html);
+  });
+});
+router.route("/shop/insert").get((req, res) => {
+  req.app.render("shop/Insert", {}, (err, html) => {
+    res.end(html);
+  });
+});
+router.route("/shop/modify").get((req, res) => {
+  req.app.render("shop/Modify", {}, (err, html) => {
+    res.end(html);
+  });
+});
+router.route("/shop/detail").get((req, res) => {
+  req.app.render("shop/Detail", {}, (err, html) => {
+    res.end(html);
+  });
+});
+router.route("/shop/delete").get((req, res) => {
+  req.app.render("shop/Delete", {}, (err, html) => {
+    res.end(html);
+  });
+});
+router.route("/shop/cart").get((req, res) => {
+  req.app.render("shop/Cart", {}, (err, html) => {
     res.end(html);
   });
 });
