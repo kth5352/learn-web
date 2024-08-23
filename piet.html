@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piet 코드 시각화</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="pietCanvas" width="300" height="300"></canvas>
+    <script>
+      const pietCode = [
+        [
+          "밝은빨강",
+          "밝은노랑",
+          "밝은초록",
+          "밝은청록",
+          "밝은파랑",
+          "밝은자홍",
+        ],
+        ["빨강", "노랑", "초록", "청록", "파랑", "자홍"],
+        [
+          "어두운빨강",
+          "어두운노랑",
+          "어두운초록",
+          "어두운청록",
+          "어두운파랑",
+          "어두운자홍",
+        ],
+        ["검정", "흰색", "밝은빨강", "빨강", "어두운빨강", "밝은노랑"],
+        ["노랑", "어두운노랑", "밝은초록", "초록", "어두운초록", "밝은청록"],
+        ["청록", "어두운청록", "밝은파랑", "파랑", "어두운파랑", "밝은자홍"],
+      ];
+
+      const colorMap = {
+        밝은빨강: "#FFC0C0",
+        밝은노랑: "#FFFFC0",
+        밝은초록: "#C0FFC0",
+        밝은청록: "#C0FFFF",
+        밝은파랑: "#C0C0FF",
+        밝은자홍: "#FFC0FF",
+        빨강: "#FF0000",
+        노랑: "#FFFF00",
+        초록: "#00FF00",
+        청록: "#00FFFF",
+        파랑: "#0000FF",
+        자홍: "#FF00FF",
+        어두운빨강: "#C00000",
+        어두운노랑: "#C0C000",
+        어두운초록: "#00C000",
+        어두운청록: "#00C0C0",
+        어두운파랑: "#0000C0",
+        어두운자홍: "#C000C0",
+        흰색: "#FFFFFF",
+        검정: "#000000",
+      };
+
+      const canvas = document.getElementById("pietCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const cellSize = canvas.width / pietCode[0].length;
+
+      pietCode.forEach((row, y) => {
+        row.forEach((color, x) => {
+          ctx.fillStyle = colorMap[color];
+          ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+          ctx.strokeStyle = "#000000";
+          ctx.strokeRect(x * cellSize, y * cellSize, cellSize, cellSize);
+        });
+      });
+    </script>
+  </body>
+</html>
